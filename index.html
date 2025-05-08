@@ -297,20 +297,21 @@
       ...sizeData
     };
 
-    // Send data to Google Apps Script
-    fetch('https://script.google.com/macros/s/AKfycbzvJDGxndLtZtPLft0qJxHazjDt_60PZMOmRJyR9cRv3J3uSLTh--vVvbXOi-70kSjh/exec', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(data)
-})
-.then(() => {
-  alert('✅ تم إرسال الطلب بنجاح!');
-  document.querySelector('form').reset();
-  updateTotal(); // Reset totals
-})
-.catch(error => {
-  console.error('Error!', error);
-  alert('❌ حدث خطأ أثناء الإرسال. تأكد من الاتصال بالإنترنت.');
+  // Send data to Google Apps Script
+  fetch('https://script.google.com/macros/s/AKfycbzvJDGxndLtZtPLft0qJxHazjDt_60PZMOmRJyR9cRv3J3uSLTh--vVvbXOi-70kSjh/exec', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(() => {
+    alert('✅ تم إرسال الطلب بنجاح!');
+    document.querySelector('form').reset();
+    updateTotal(); // Reset totals
+  })
+  .catch(error => {
+    console.error('Error!', error);
+    alert('❌ حدث خطأ أثناء الإرسال. تأكد من الاتصال بالإنترنت.');
+  });
 });
 </script>
 
