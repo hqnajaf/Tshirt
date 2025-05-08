@@ -300,9 +300,7 @@
     // Send data to Google Apps Script
     fetch('https://script.google.com/macros/s/AKfycbzvJDGxndLtZtPLft0qJxHazjDt_60PZMOmRJyR9cRv3J3uSLTh--vVvbXOi-70kSjh/exec', {
   method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
+  headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(data)
 })
 .then(() => {
