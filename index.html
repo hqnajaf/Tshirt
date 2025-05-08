@@ -275,29 +275,21 @@
   };
 </script>
 <script>
-  document.getElementById('orderForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+document.getElementById('orderForm').addEventListener('submit', function(e) {
+  e.preventDefault();
 
-    // Collect form data
-    const name = document.getElementById('name').value;
-    const mobile = document.getElementById('mobile').value;
-    const address = document.getElementById('address') ? document.getElementById('address').value : '';
-    const sizes = ['s', 'm', 'l', 'xl', 'xxl', 'xxxl'];
-    const sizeData = {};
+  const data = {
+    name: document.getElementById("name").value,
+    mobile: document.getElementById("mobile").value,
+    address: document.getElementById("address") ? document.getElementById("address").value : '',
+    s: document.getElementById("qty-s").value,
+    m: document.getElementById("qty-m").value,
+    l: document.getElementById("qty-l").value,
+    xl: document.getElementById("qty-xl").value,
+    xxl: document.getElementById("qty-xxl").value,
+    xxxl: document.getElementById("qty-xxxl").value,
+  };
 
-    sizes.forEach(size => {
-      sizeData[size] = document.getElementById(`qty-${size}`).value;
-    });
-
-    // Prepare data to send
-    const data = {
-      name,
-      mobile,
-      address,
-      ...sizeData
-    };
-
-  // Send data to Google Apps Script
   fetch('https://script.google.com/macros/s/AKfycbzvJDGxndLtZtPLft0qJxHazjDt_60PZMOmRJyR9cRv3J3uSLTh--vVvbXOi-70kSjh/exec', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -305,8 +297,8 @@
   })
   .then(() => {
     alert('✅ تم إرسال الطلب بنجاح!');
-    document.querySelector('form').reset();
-    updateTotal(); // Reset totals
+    document.getElementById('orderForm').reset();
+    updateTotal();
   })
   .catch(error => {
     console.error('Error!', error);
@@ -314,6 +306,7 @@
   });
 });
 </script>
+
 
 </body>
 </html>
