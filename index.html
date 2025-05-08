@@ -305,16 +305,15 @@
   },
   body: JSON.stringify(data)
 })
-
-    .then(() => {
-      alert('✅ تم إرسال الطلب بنجاح!');
-      document.querySelector('form').reset();
-      updateTotal(); // Reset totals
-    })
-    .catch(error => {
-      console.error('Error!', error.message);
-    });
-  });
+.then(() => {
+  alert('✅ تم إرسال الطلب بنجاح!');
+  document.querySelector('form').reset();
+  updateTotal(); // Reset totals
+})
+.catch(error => {
+  console.error('Error!', error);
+  alert('❌ حدث خطأ أثناء الإرسال. تأكد من الاتصال بالإنترنت.');
+});
 </script>
 
 </body>
